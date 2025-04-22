@@ -33,9 +33,13 @@
         [ 
           pkgs.neovim
           pkgs.mkalias
-          pkgs.tmux
           pkgs.alacritty
+          pkgs.zsh
+          pkgs.arc-browser
         ];
+
+      security.pam.services.sudo_local.touchIdAuth = true;
+
 
       homebrew = {
         enable = true;
@@ -46,16 +50,22 @@
         brews = [
           "ca-certificates"
           "poetry"
-          "python@3.13"
           "python@3.9"
         ];
+        onActivation.autoUpdate = true;
+        onActivation.upgrade = true;
       };
 
       # Necessary for using flakes on this system.
       nix.settings.experimental-features = "nix-command flakes";
 
       # Enable alternative shell support in nix-darwin.
-      # programs.fish.enable = true;
+      programs.zsh.enable = true;
+
+      system.defaults = {
+        dock.autohide = true;
+        finder.FXPreferredViewStyle = "clmv";
+      };
 
       # Set Git commit hash for darwin-version.
       system.configurationRevision = self.rev or self.dirtyRev or null;
