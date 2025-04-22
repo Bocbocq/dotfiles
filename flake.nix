@@ -5,11 +5,16 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     nix-darwin.url = "github:nix-darwin/nix-darwin/master";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     mac-app-util.url = "github:hraban/mac-app-util";
-
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
+    stylix.url = "github:danth/stylix";
 
-    # Optional: Declarative tap management
     homebrew-core = {
       url = "github:homebrew/homebrew-core";
       flake = false;
@@ -20,86 +25,26 @@
     };
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, mac-app-util, nix-homebrew, ... }:
-  let
-    configuration = { pkgs, config, ... }: {
-
-      # allow installing unfree applications
-      nixpkgs.config.allowUnfree = true;
-
-      # List packages installed in system profile. To search by name, run:
-      # $ nix-env -qaP | grep wget
-      environment.systemPackages =
-        [ 
-          pkgs.neovim
-          pkgs.mkalias
-          pkgs.alacritty
-          pkgs.zsh
-          pkgs.arc-browser
-        ];
-
-      security.pam.services.sudo_local.touchIdAuth = true;
-
-
-      homebrew = {
-        enable = true;
-        casks = [
-          "sapmachine11-jdk"
-          "zen-browser"
-        ];
-        brews = [
-          "ca-certificates"
-          "poetry"
-          "python@3.9"
-        ];
-        onActivation.autoUpdate = true;
-        onActivation.upgrade = true;
-      };
-
-      # Necessary for using flakes on this system.
-      nix.settings.experimental-features = "nix-command flakes";
-
-      # Enable alternative shell support in nix-darwin.
-      programs.zsh.enable = true;
-
-      system.defaults = {
-        dock.autohide = true;
-        finder.FXPreferredViewStyle = "clmv";
-      };
-
-      # Set Git commit hash for darwin-version.
-      system.configurationRevision = self.rev or self.dirtyRev or null;
-
-      # Used for backwards compatibility, please read the changelog before changing.
-      # $ darwin-rebuild changelog
-      system.stateVersion = 6;
-
-      # The platform the configuration will be used on.
-      nixpkgs.hostPlatform = "aarch64-darwin";
-    };
-  in
-  {
-    # Build darwin flake using:
-    # $ darwin-rebuild build --flake .#boc
+  outputs = inputs@{ self, nix-darwin, nixpkgs, mac-app-util, nix-homebrew, stylix, home-manager, ... }: {
     darwinConfigurations."boc" = nix-darwin.lib.darwinSystem {
-      modules = [ 
-        configuration
-        mac-app-util.darwinModules.default 
+      system = "aarch64-darwin";
+      modules = [
+        ./configuration.nix
+
+        mac-app-util.darwinModules.default
         nix-homebrew.darwinModules.nix-homebrew
+        stylix.darwinModules.stylix
+        home-manager.darwinModules.home-manager
+
         {
           nix-homebrew = {
-            # Install homebrew under the default prefix
             enable = true;
-
-            # User owning the Homebrew prefix
             user = "anthonybocquet";
-
-            # Apple Silicon Only
             enableRosetta = true;
-
-            # Automatically migrate existing Homebrew installations
             autoMigrate = true;
           };
+
+          system.configurationRevision = self.rev or self.dirtyRev or null;
         }
       ];
     };
