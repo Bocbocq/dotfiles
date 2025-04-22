@@ -6,19 +6,50 @@
     nix-darwin.url = "github:nix-darwin/nix-darwin/master";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     mac-app-util.url = "github:hraban/mac-app-util";
+
+    nix-homebrew.url = "github:zhaofengli/nix-homebrew";
+
+    # Optional: Declarative tap management
+    homebrew-core = {
+      url = "github:homebrew/homebrew-core";
+      flake = false;
+    };
+    homebrew-cask = {
+      url = "github:homebrew/homebrew-cask";
+      flake = false;
+    };
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, mac-app-util, ... }:
+  outputs = inputs@{ self, nix-darwin, nixpkgs, mac-app-util, nix-homebrew, ... }:
   let
     configuration = { pkgs, config, ... }: {
+
+      # allow installing unfree applications
+      nixpkgs.config.allowUnfree = true;
+
       # List packages installed in system profile. To search by name, run:
       # $ nix-env -qaP | grep wget
       environment.systemPackages =
-        [ pkgs.neovim
+        [ 
+          pkgs.neovim
           pkgs.mkalias
           pkgs.tmux
           pkgs.alacritty
         ];
+
+      homebrew = {
+        enable = true;
+        casks = [
+          "sapmachine11-jdk"
+          "zen-browser"
+        ];
+        brews = [
+          "ca-certificates"
+          "poetry"
+          "python@3.13"
+          "python@3.9"
+        ];
+      };
 
       # Necessary for using flakes on this system.
       nix.settings.experimental-features = "nix-command flakes";
@@ -41,7 +72,26 @@
     # Build darwin flake using:
     # $ darwin-rebuild build --flake .#boc
     darwinConfigurations."boc" = nix-darwin.lib.darwinSystem {
-      modules = [ configuration mac-app-util.darwinModules.default ];
+      modules = [ 
+        configuration
+        mac-app-util.darwinModules.default 
+        nix-homebrew.darwinModules.nix-homebrew
+        {
+          nix-homebrew = {
+            # Install homebrew under the default prefix
+            enable = true;
+
+            # User owning the Homebrew prefix
+            user = "anthonybocquet";
+
+            # Apple Silicon Only
+            enableRosetta = true;
+
+            # Automatically migrate existing Homebrew installations
+            autoMigrate = true;
+          };
+        }
+      ];
     };
   };
 }
