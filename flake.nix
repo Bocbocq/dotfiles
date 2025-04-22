@@ -6,11 +6,6 @@
     nix-darwin.url = "github:nix-darwin/nix-darwin/master";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
 
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     mac-app-util.url = "github:hraban/mac-app-util";
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
     stylix.url = "github:danth/stylix";
@@ -25,7 +20,7 @@
     };
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, mac-app-util, nix-homebrew, stylix, home-manager, ... }: {
+  outputs = inputs@{ self, nix-darwin, nixpkgs, mac-app-util, nix-homebrew, stylix, ... }: {
     darwinConfigurations."boc" = nix-darwin.lib.darwinSystem {
       system = "aarch64-darwin";
       modules = [
@@ -34,7 +29,6 @@
         mac-app-util.darwinModules.default
         nix-homebrew.darwinModules.nix-homebrew
         stylix.darwinModules.stylix
-        home-manager.darwinModules.home-manager
 
         {
           nix-homebrew = {
