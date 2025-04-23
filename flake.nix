@@ -6,6 +6,9 @@
     nix-darwin.url = "github:nix-darwin/nix-darwin/master";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
 
+    home-manager.url = "github:nix-community/home-manager";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
     mac-app-util.url = "github:hraban/mac-app-util";
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
     stylix.url = "github:danth/stylix";
@@ -20,7 +23,7 @@
     };
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, mac-app-util, nix-homebrew, stylix, ... }: {
+  outputs = inputs@{ self, nix-darwin, nixpkgs, mac-app-util, nix-homebrew, stylix, home-manager, ... }: {
     darwinConfigurations."boc" = nix-darwin.lib.darwinSystem {
       system = "aarch64-darwin";
       modules = [
@@ -29,6 +32,15 @@
         mac-app-util.darwinModules.default
         nix-homebrew.darwinModules.nix-homebrew
         stylix.darwinModules.stylix
+        home-manager.darwinModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.users.anthonybocquet = ./modules/home.nix;
+
+          # Optionally, use home-manager.extraSpecialArgs to pass
+          # arguments to home.nix
+        }
 
         {
           nix-homebrew = {
