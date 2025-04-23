@@ -1,3 +1,4 @@
+{ config, pkgs, ...}:
 {
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
@@ -16,4 +17,6 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+
+  home.file.".config/sketchybar/sketchybarrc".source = ./home/sketchybar/sketchybarrc;
 }

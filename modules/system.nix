@@ -17,6 +17,7 @@
   nix.nixPath = [ "nixpkgs=${pkgs.path}" ];
 
   programs.zsh.enable = true;
+  services.sketchybar.enable = true;
 
   system.defaults = {
     dock.autohide = true;
