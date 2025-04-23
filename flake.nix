@@ -27,7 +27,7 @@
   outputs = inputs@{ self, nix-darwin, nixpkgs, mac-app-util, nix-homebrew, stylix, home-manager, ... }: {
     darwinConfigurations."boc" = nix-darwin.lib.darwinSystem {
       system = "aarch64-darwin";
-      security.pam.services.sudo_local.touchIdAuth = true;
+      
       modules = [
         ./configuration.nix
 
@@ -56,6 +56,7 @@
           };
 
           system.configurationRevision = self.rev or self.dirtyRev or null;
+          security.pam.services.sudo_local.touchIdAuth = true;
         }
       ];
     };
