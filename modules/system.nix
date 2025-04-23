@@ -10,14 +10,16 @@
     zsh
     arc-browser
     nixd
-    sketchybar
   ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nix.nixPath = [ "nixpkgs=${pkgs.path}" ];
 
   programs.zsh.enable = true;
-  services.sketchybar.enable = true;
+  services.sketchybar = {
+    enable = true;
+    package = pkgs.sketchybar;
+  };
 
   system.defaults = {
     dock.autohide = true;

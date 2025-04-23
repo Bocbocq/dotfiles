@@ -18,5 +18,8 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
-  home.file.".config/sketchybar/sketchybarrc".source = ./home/sketchybar/sketchybarrc;
+  home.file.".config/sketchybar/sketchybarrc"= {
+    source = ./home/sketchybar/sketchybarrc;
+    onChange = "${pkgs.sketchybar}/bin/sketchybar --reload";
+  };
 }
