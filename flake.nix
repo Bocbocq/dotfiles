@@ -21,6 +21,7 @@
       url = "github:homebrew/homebrew-cask";
       flake = false;
     };
+
   };
 
   outputs = inputs@{ self, nix-darwin, nixpkgs, mac-app-util, nix-homebrew, stylix, home-manager, ... }: {
@@ -34,10 +35,12 @@
         stylix.darwinModules.stylix
         home-manager.darwinModules.home-manager
         {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.users.anthonybocquet = ./modules/home.nix;
-
+          users.users.anthonybocquet.home = "/Users/anthonybocquet";
+          #users.users.home.stateVersion = "24.11";
+          home-manager = {
+            useGlobalPkgs = true;
+            useUserPackages = true;
+          };
           # Optionally, use home-manager.extraSpecialArgs to pass
           # arguments to home.nix
         }
