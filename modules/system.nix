@@ -16,13 +16,12 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nix.nixPath = [ "nixpkgs=${pkgs.path}" ];
 
-  security.pam.services.sudo_local.touchIdAuth = true;
-
   programs.zsh.enable = true;
 
   system.defaults = {
     dock.autohide = true;
     finder.FXPreferredViewStyle = "clmv";
+    NSGlobalDomain._HIHideMenuBar = true;
   };
 
   system.stateVersion = 6;
