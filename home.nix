@@ -1,9 +1,9 @@
 { config, pkgs, ...}:
+
 {
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
   home.username = "anthonybocquet";
-  #home = "/Users/anthonybocquet";
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
@@ -18,7 +18,12 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
-  home.file.".config/sketchybar/sketchybarrc"= {
+  home.file.".config/sketchybar" = {
+    source = ./home/sketchybar;
+    recursive = true;
+    onChange = "${pkgs.sketchybar}/bin/sketchybar --reload";
+  };
+  home.file.".config/sketchybar/sketchybarrc" = {
     source = ./home/sketchybar/sketchybarrc;
     onChange = "${pkgs.sketchybar}/bin/sketchybar --reload";
   };
