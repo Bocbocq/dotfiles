@@ -10,6 +10,7 @@
     zsh
     arc-browser
     nixd
+    sketchybar
   ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];

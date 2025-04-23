@@ -35,7 +35,7 @@
         stylix.darwinModules.stylix
         home-manager.darwinModules.home-manager
         {
-          #users.users.anthonybocquet.home = "/Users/anthonybocquet";
+          users.users.anthonybocquet.home = "/Users/anthonybocquet";
           #users.users.home.stateVersion = "24.11";
           home-manager = {
             useGlobalPkgs = true;
