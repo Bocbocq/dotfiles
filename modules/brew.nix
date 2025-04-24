@@ -15,7 +15,6 @@
 
     casks = [
       "sapmachine11-jdk"
-      "zen-browser"
     ];
 
     onActivation = {

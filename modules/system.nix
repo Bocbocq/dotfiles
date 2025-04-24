@@ -4,12 +4,12 @@
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
-    neovim
     mkalias
     alacritty
     zsh
     arc-browser
     nixd
+    nil
   ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
