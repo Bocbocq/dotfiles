@@ -16,15 +16,11 @@
   nix.nixPath = [ "nixpkgs=${pkgs.path}" ];
 
   programs.zsh.enable = true;
-  services.sketchybar = {
-    enable = true;
-    package = pkgs.sketchybar;
-  };
 
   system.defaults = {
     dock.autohide = true;
     finder.FXPreferredViewStyle = "clmv";
-    NSGlobalDomain._HIHideMenuBar = true;
+    NSGlobalDomain._HIHideMenuBar = false;
   };
 
   system.stateVersion = 6;

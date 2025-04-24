@@ -39,6 +39,7 @@
           users.users.anthonybocquet.home = "/Users/anthonybocquet";
           #users.users.home.stateVersion = "24.11";
           home-manager = {
+            extraSpecialArgs = { inherit inputs; };
             useGlobalPkgs = true;
             useUserPackages = true;
             users.anthonybocquet = ./home.nix;

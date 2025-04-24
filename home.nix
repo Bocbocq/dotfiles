@@ -1,4 +1,4 @@
-{ config, pkgs, ...}:
+{ config, pkgs, lib, ...}:
 
 {
   # Home Manager needs a bit of information about you and the
@@ -18,13 +18,6 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
-  home.file.".config/sketchybar" = {
-    source = ./home/sketchybar;
-    recursive = true;
-    onChange = "${pkgs.sketchybar}/bin/sketchybar --reload";
-  };
-  home.file.".config/sketchybar/sketchybarrc" = {
-    source = ./home/sketchybar/sketchybarrc;
-    onChange = "${pkgs.sketchybar}/bin/sketchybar --reload";
-  };
+  xdg.enable = true;
+
 }
