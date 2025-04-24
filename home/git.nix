@@ -1,3 +1,4 @@
+{ pkgs, config, ... }:
 {
   programs.git.enable = true;
   
@@ -15,7 +16,7 @@
       contents.user = {
         email = "anbocque@gmail.com";
         name = "Bocbocq";
-      }
+      };
     }
-  ]
+  ];
 }

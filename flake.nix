@@ -27,26 +27,16 @@
   outputs = inputs@{ self, nix-darwin, nixpkgs, mac-app-util, nix-homebrew, stylix, home-manager, ... }: {
     darwinConfigurations."boc" = nix-darwin.lib.darwinSystem {
       system = "aarch64-darwin";
+
+      specialArgs = { inherit inputs;};
       
       modules = [
         ./configuration.nix
+        ./home_manager.nix
 
         mac-app-util.darwinModules.default
         nix-homebrew.darwinModules.nix-homebrew
         stylix.darwinModules.stylix
-        home-manager.darwinModules.home-manager
-        {
-          users.users.anthonybocquet.home = "/Users/anthonybocquet";
-          #users.users.home.stateVersion = "24.11";
-          home-manager = {
-            extraSpecialArgs = { inherit inputs; };
-            useGlobalPkgs = true;
-            useUserPackages = true;
-            users.anthonybocquet = ./home.nix;
-          };
-          # Optionally, use home-manager.extraSpecialArgs to pass
-          # arguments to home.nix
-        }
 
         {
           nix-homebrew = {

@@ -23,5 +23,12 @@
     NSGlobalDomain._HIHideMenuBar = false;
   };
 
+  users.users= {
+    anthonybocquet = {
+      name = "anthonybocquet";
+      home = "/Users/anthonybocquet";
+    };
+  };
+
   system.stateVersion = 6;
 }
