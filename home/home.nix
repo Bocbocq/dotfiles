@@ -2,6 +2,7 @@
 
   imports = [
     ./git.nix
+    ./zsh.nix
   ];
 
   programs.home-manager.enable = true;
@@ -11,6 +12,11 @@
     stateVersion = "24.11";
     packages = with pkgs; [
       zsh
+      zsh-autosuggestions
+      zsh-completions
+      zsh-syntax-highlighting
+      zsh-you-should-use
+      coreutils
     ];
   };
 }

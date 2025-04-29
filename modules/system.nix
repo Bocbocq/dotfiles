@@ -6,21 +6,33 @@
   environment.systemPackages = with pkgs; [
     mkalias
     alacritty
-    zsh
     arc-browser
     nixd
     nil
+    zsh
   ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  nix.nixPath = [ "nixpkgs=${pkgs.path}" ];
-
-  programs.zsh.enable = true;
+  #nix.nixPath = [ "nixpkgs=${pkgs.path}" ];
 
   system.defaults = {
     dock.autohide = true;
-    finder.FXPreferredViewStyle = "clmv";
-    NSGlobalDomain._HIHideMenuBar = false;
+    menuExtraClock.ShowSeconds = true;
+
+    finder = {
+      ShowStatusBar = true;
+      FXPreferredViewStyle = "clmv";
+      AppleShowAllExtensions = true;
+      AppleShowAllFiles = true;
+      ShowPathbar = true;
+    };
+
+    NSGlobalDomain = {
+      _HIHideMenuBar = false;
+      AppleShowAllExtensions = true;
+      AppleShowAllFiles = true;
+    };
+    controlcenter.BatteryShowPercentage = true;
   };
 
   users.users= {
