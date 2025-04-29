@@ -3,6 +3,7 @@
   imports = [
     ./git.nix
     ./zsh.nix
+    ./starship.nix
   ];
 
   programs.home-manager.enable = true;
@@ -16,7 +17,7 @@
       zsh-completions
       zsh-syntax-highlighting
       zsh-you-should-use
-      coreutils
+      starship
     ];
   };
 }
