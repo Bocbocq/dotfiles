@@ -7,6 +7,7 @@
     nixd
     nil
     zsh
+    uv
   ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
