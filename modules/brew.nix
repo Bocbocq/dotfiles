@@ -8,13 +8,17 @@
     ];
 
     brews = [
-      "ca-certificates"
       "poetry"
-      "python@3.9"
+      "python@3.12"
+      "flyway"
+      "cowsay"
+      "fortune"
     ];
 
     casks = [
-      "sapmachine11-jdk"
+      "sapmachine17-jdk"
+      "ghostty"
+      "arc"
     ];
 
     onActivation = {

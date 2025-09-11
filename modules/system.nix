@@ -4,20 +4,15 @@
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
-    mkalias
-    alacritty
-    arc-browser
     nixd
     nil
     zsh
   ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  #nix.nixPath = [ "nixpkgs=${pkgs.path}" ];
 
   system.defaults = {
     dock.autohide = true;
-    menuExtraClock.ShowSeconds = true;
 
     finder = {
       ShowStatusBar = true;
@@ -34,6 +29,9 @@
     };
     controlcenter.BatteryShowPercentage = true;
   };
+
+  # Set primary user for nix-darwin (required for homebrew and system defaults)
+  system.primaryUser = "anthonybocquet";
 
   users.users= {
     anthonybocquet = {
