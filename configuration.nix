@@ -9,6 +9,8 @@
   # Git configuration using environment variables and global gitconfig
   environment.systemPackages = with pkgs; [
     git
+    stow
+    tmux
   ];
 
   environment.etc."gitconfig".text = ''
