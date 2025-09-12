@@ -32,6 +32,7 @@
         nix-homebrew.darwinModules.nix-homebrew
 
         {
+          # Homebrew configuration
           nix-homebrew = {
             enable = true;
             user = "anthonybocquet";

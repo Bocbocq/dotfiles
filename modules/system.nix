@@ -1,23 +1,18 @@
-{ pkgs, ... }:
+{ ... }:
 
 {
+  # Nix configuration
   nixpkgs.config.allowUnfree = true;
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  environment.systemPackages = with pkgs; [
-    nixd
-    nil
-    zsh
-    uv
-  ];
-
+  # Environment variables
   environment.variables = {
     XDG_CONFIG_HOME = "$HOME/.config";
     XDG_DATA_HOME   = "$HOME/var/lib";
     XDG_CACHE_HOME  = "$HOME/var/cache";
   };
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
+  # macOS system defaults
   system.defaults = {
     dock.autohide = true;
 
@@ -34,17 +29,8 @@
       AppleShowAllExtensions = true;
       AppleShowAllFiles = true;
     };
+    
     controlcenter.BatteryShowPercentage = true;
-  };
-
-  # Set primary user for nix-darwin (required for homebrew and system defaults)
-  system.primaryUser = "anthonybocquet";
-
-  users.users= {
-    anthonybocquet = {
-      name = "anthonybocquet";
-      home = "/Users/anthonybocquet";
-    };
   };
 
   system.stateVersion = 6;
