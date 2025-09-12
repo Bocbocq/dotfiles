@@ -1,6 +1,6 @@
 # This is my Nix repository
 
-darwin-rebuild switch --flake ./#boc
+sudo darwin-rebuild switch --flake ./#boc
 
 # Stow dotfiles:
 ```bash

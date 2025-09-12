@@ -10,6 +10,12 @@
     uv
   ];
 
+  environment.variables = {
+    XDG_CONFIG_HOME = "$HOME/.config";
+    XDG_DATA_HOME   = "$HOME/var/lib";
+    XDG_CACHE_HOME  = "$HOME/var/cache";
+  };
+
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   system.defaults = {

@@ -1,0 +1,19 @@
+theme = catppuccin-frappe
+
+shell-integration = zsh
+shell-integration-features = cursor
+
+cursor-click-to-move = true
+macos-icon = holographic
+
+window-theme = ghostty
+
+quit-after-last-window-closed = true
+mouse-hide-while-typing = true
+
+font-size = 17.75
+font-family = "JetbrainsMonoNL Nerd Font Mono"
+
+quick-terminal-position = top
+quick-terminal-animation-duration = 0.2
+keybind = global:ctrl+`=toggle_quick_terminal

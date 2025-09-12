@@ -13,6 +13,7 @@
       "flyway"
       "cowsay"
       "fortune"
+      "stow"
     ];
 
     casks = [
