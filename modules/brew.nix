@@ -9,12 +9,6 @@
 
     # CLI tools and utilities
     brews = [
-      # Python development
-      "poetry"
-      "python@3.12"
-      
-      # Database tools
-      "flyway"
       
       # Fun utilities
       "cowsay"

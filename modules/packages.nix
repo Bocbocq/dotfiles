@@ -15,8 +15,12 @@
     
     # Shell
     zsh
+    starship
     
     # Python package manager
     uv
+    ruff
+    pyright
+    copier
   ];
 }
