@@ -1,15 +1,2 @@
 theme = Catppuccin Frappe
-
 shell-integration = zsh
-shell-integration-features = cursor
-
-cursor-click-to-move = true
-macos-icon = holographic
-
-window-theme = ghostty
-
-quit-after-last-window-closed = true
-mouse-hide-while-typing = true
-
-font-size = 17.75
-font-family = "JetbrainsMonoNL Nerd Font Mono"

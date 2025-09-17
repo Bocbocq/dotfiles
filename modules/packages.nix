@@ -3,6 +3,9 @@
 {
   # Core system packages that should be available system-wide
   environment.systemPackages = with pkgs; [
+    # Power user
+    neovim
+
     # Version control
     git
     
@@ -16,8 +19,14 @@
     # Shell
     zsh
     starship
+    fzf
+    zsh-fzf-tab
+    oh-my-zsh
+    zsh-autosuggestions
+    zsh-syntax-highlighting
+    zsh-completions
     
-    # Python package manager
+    # Python
     uv
     ruff
     pyright
