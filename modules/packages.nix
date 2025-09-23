@@ -8,10 +8,11 @@
 
     # Version control
     git
-    
+    lazygit
+    delta
     # Terminal multiplexer
     tmux
-    
+    sesh   
     # Nix language servers for development
     nixd  # Nix language server
     nil   # Another Nix language server
@@ -25,7 +26,10 @@
     zsh-autosuggestions
     zsh-syntax-highlighting
     zsh-completions
-    
+    ripgrep
+    fd
+    zoxide
+
     # Python
     uv
     ruff
