@@ -9,6 +9,17 @@
 
     [includeIf "gitdir:~/perso/"]
       path = ~/.gitconfig-perso
+    [pull]
+      rebase = true
+
+    [rebase]
+      autoStash = true
+
+    [filter "lfs"]
+      process = git-lfs filter-process
+      required = true
+      clean = git-lfs clean -- %f
+      smudge = git-lfs smudge -- %f
 
     [core]
       pager = delta
@@ -16,9 +27,43 @@
     [interactive]
       diffFilter = delta --color-only
 
+    [delta "catppuccin-mocha"]
+      blame-palette = "#1e1e2e #181825 #11111b #313244 #45475a"
+      commit-decoration-style = "#6c7086" bold box ul
+      file-decoration-style = "#6c7086"
+      file-style = "#cdd6f4"
+      hunk-header-decoration-style = "#6c7086" box ul
+      hunk-header-file-style = bold
+      hunk-header-line-number-style = bold "#a6adc8"
+      hunk-header-style = file line-number syntax
+      line-numbers-left-style = "#6c7086"
+      line-numbers-minus-style = bold "#f38ba8"
+      line-numbers-plus-style = bold "#a6e3a1"
+      line-numbers-right-style = "#6c7086"
+      line-numbers-zero-style = "#6c7086"
+      # 25% red 75% base
+      minus-emph-style = bold syntax "#53394c"
+      # 10% red 90% base
+      minus-style = syntax "#34293a"
+      # 25% green 75% base
+      plus-emph-style = bold syntax "#404f4a"
+      # 10% green 90% base
+      plus-style = syntax "#2c3239"
+      map-styles = \
+        bold purple => syntax "#494060", \
+        bold blue => syntax "#384361", \
+        bold cyan => syntax "#384d5d", \
+        bold yellow => syntax "#544f4e"
+      # Should match the name of the bat theme
+      syntax-theme = Catppuccin Mocha
+
     [delta]
       navigate = true  # use n and N to move between diff sections
-      dark = true      # or light = true, or omit for auto-detection
+      features = catppuccin-mocha
+      line-numbers = true
+      file-style = omit
+      max-line-length = 0
+      wrap-max-lines = unlimited
 
     [merge]
       conflictStyle = zdiff3
@@ -28,18 +73,5 @@
     [user]
       email = anbocque@gmail.com
       name = Bocbocq
-    [core]
-      pager = delta
-
-    [interactive]
-      diffFilter = delta --color-only
-
-    [delta]
-      navigate = true  # use n and N to move between diff sections
-      dark = true      # or light = true, or omit for auto-detection
-
-    [merge]
-      conflictStyle = zdiff3
-
-  '';
+    '';
 }

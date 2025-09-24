@@ -29,6 +29,8 @@
     ripgrep
     fd
     zoxide
+    bat
+    wget
 
     # Python
     uv
