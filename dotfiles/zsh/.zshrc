@@ -5,5 +5,22 @@ source <(fzf --zsh)
 # Catppuccin Mocha theme for fzf
 export FZF_DEFAULT_OPTS="--color=bg+:#313244,fg:#CDD6F4,hl:#F38BA8,fg+:#CDD6F4,hl+:#F38BA8,pointer:#F5E0DC,marker:#B4BEFE,prompt:#CBA6F7"
 
+function sesh-sessions() {
+  {
+    exec </dev/tty
+    exec <&1
+    local session
+    session=$(sesh list -t -c | fzf --height 40% --reverse --border-label ' sesh ' --border --prompt '⚡  ')
+    zle reset-prompt > /dev/null 2>&1 || true
+    [[ -z "$session" ]] && return
+    sesh connect $session
+  }
+}
+
+zle     -N             sesh-sessions
+bindkey -M emacs '\es' sesh-sessions
+bindkey -M vicmd '\es' sesh-sessions
+bindkey -M viins '\es' sesh-sessions
+
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
