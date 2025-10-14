@@ -12,7 +12,8 @@
     delta
     # Terminal multiplexer
     tmux
-    sesh   
+    sesh
+    
     # Nix language servers for development
     nixd  # Nix language server
     nil   # Another Nix language server
@@ -37,5 +38,8 @@
     ruff
     pyright
     copier
+
+    # Others
+    nodejs
   ];
 }
