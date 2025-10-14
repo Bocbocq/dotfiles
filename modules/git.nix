@@ -6,7 +6,7 @@
     [user]
       email = anthony.bocquet@sap.com
       name = I539938
-      signingkey = FB5EACFA9E7122161111B3B774B236753349CD2F
+      signingkey = 46B06778CFBB38EF
 
     [includeIf "gitdir:~/perso/"]
       path = ~/.gitconfig-perso
@@ -68,6 +68,9 @@
 
     [merge]
       conflictStyle = zdiff3
+    
+    [gpg]
+      program = gpg2
 
     [commit]
       gpgSign = true
