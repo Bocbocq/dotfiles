@@ -9,16 +9,13 @@
     rustfmt
     clippy
 
-    # Zig
-    pkgs.zigpkgs.master
-
     # Editor and Git
     neovim
     git
     lazygit
     delta
     gum
-    
+
     # Shell
     zsh
     starship
@@ -28,7 +25,7 @@
     zsh-autosuggestions
     zsh-syntax-highlighting
     zsh-completions
-    
+
     # CLI tools
     ripgrep
     fd
@@ -36,7 +33,7 @@
     bat
     wget
     sesh
-    
+
     # Nix tools
     nixd
     statix
