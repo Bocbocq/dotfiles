@@ -8,6 +8,7 @@
     taps = [
 
       "databricks/tap"
+      "cloudfoundry/tap"
 
     ];
 
@@ -22,25 +23,31 @@
 
       "tree-sitter-cli"
 
+      "cf-cli@8"
       "databricks"
       "gnupg"
+      "nvm"
+      "tmux"
+      "docker"
+      "docker-compose"
     ];
 
     # GUI applications
     casks = [
       # Development
-      "sapmachine17-jdk"
-      
+      "sapmachine25-jdk"
+      "bruno"
       # Terminal
       "ghostty"
+      "font-jetbrains-mono-nerd-font"
       
       # Browser
       "arc"
     ];
 
     onActivation = {
-      autoUpdate = true;
-      upgrade = true;
+      autoUpdate = false;
+      upgrade = false;
     };
   };
 }

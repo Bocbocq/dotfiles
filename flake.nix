@@ -8,6 +8,7 @@
 
     mac-app-util.url = "github:hraban/mac-app-util";
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
+    zig.url = "github:mitchellh/zig-overlay";
 
     homebrew-core = {
       url = "github:homebrew/homebrew-core";
@@ -19,7 +20,7 @@
     };
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, mac-app-util, nix-homebrew, ... }: {
+  outputs = inputs@{ self, zig, nix-darwin, nixpkgs, mac-app-util, nix-homebrew, ... }: {
     darwinConfigurations."boc" = nix-darwin.lib.darwinSystem {
       system = "aarch64-darwin";
 
@@ -32,6 +33,11 @@
         nix-homebrew.darwinModules.nix-homebrew
 
         {
+          # Add Zig overlay
+          nixpkgs.overlays = [
+            zig.overlays.default
+          ];
+
           # Homebrew configuration
           nix-homebrew = {
             enable = true;

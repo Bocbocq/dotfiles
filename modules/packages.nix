@@ -5,18 +5,18 @@
   environment.systemPackages = with pkgs; [
     # Power user
     neovim
-
+    gum
     # Version control
     git
     lazygit
     delta
     # Terminal multiplexer
-    tmux
     sesh
     
+    zigpkgs.master
+
     # Nix language servers for development
     nixd  # Nix language server
-    nil   # Another Nix language server
     
     # Shell
     zsh
@@ -40,6 +40,6 @@
     copier
 
     # Others
-    nodejs
+    maven
   ];
 }
