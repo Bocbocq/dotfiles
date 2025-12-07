@@ -1,22 +1,20 @@
 { pkgs, ... }:
 
 {
-  # Core system packages that should be available system-wide
   environment.systemPackages = with pkgs; [
-    # Power user
+    # Rust toolchain
+    cargo
+    rustc
+    rust-analyzer
+    rustfmt
+    clippy
+
+    # Editor and Git
     neovim
-    gum
-    # Version control
     git
     lazygit
     delta
-    # Terminal multiplexer
-    sesh
-    
-    zigpkgs.master
-
-    # Nix language servers for development
-    nixd  # Nix language server
+    gum
     
     # Shell
     zsh
@@ -27,11 +25,18 @@
     zsh-autosuggestions
     zsh-syntax-highlighting
     zsh-completions
+    
+    # CLI tools
     ripgrep
     fd
     zoxide
     bat
     wget
+    sesh
+    
+    # Nix tools
+    nixd
+    statix
 
     # Python
     uv
@@ -39,7 +44,7 @@
     pyright
     copier
 
-    # Others
+    # Java
     maven
   ];
 }

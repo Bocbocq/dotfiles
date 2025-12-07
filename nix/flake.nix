@@ -30,21 +30,6 @@
           };
           
           system.configurationRevision = self.rev or self.dirtyRev or null;
-          security.pam.enableSudoTouchIdAuth = true;
-        }
-      ];
-    };
-  };
-}
-          # Homebrew configuration
-          nix-homebrew = {
-            enable = true;
-            user = "anthonybocquet";
-            enableRosetta = true;
-            autoMigrate = true;
-          };
-
-          system.configurationRevision = self.rev or self.dirtyRev or null;
           security.pam.services.sudo_local.touchIdAuth = true;
         }
       ];

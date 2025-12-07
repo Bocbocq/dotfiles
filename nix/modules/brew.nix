@@ -34,21 +34,3 @@
     onActivation.autoUpdate = false;
   };
 }
-    casks = [
-      # Development
-      "sapmachine25-jdk"
-      "bruno"
-      # Terminal
-      "ghostty"
-      "font-jetbrains-mono-nerd-font"
-      
-      # Browser
-      "arc"
-    ];
-
-    onActivation = {
-      autoUpdate = false;
-      upgrade = false;
-    };
-  };
-}

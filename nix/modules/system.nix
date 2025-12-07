@@ -33,5 +33,4 @@
     controlcenter.BatteryShowPercentage = true;
   };
 
-  system.stateVersion = 6;
 }

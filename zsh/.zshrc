@@ -56,7 +56,7 @@ export NVM_DIR="$HOME/.nvm"
 
 
 # Aliases
-alias nix-rebuild='sudo darwin-rebuild switch --flake /Users/anthonybocquet/perso/nix/#boc'
+alias nix-rebuild='sudo darwin-rebuild switch --flake /Users/anthonybocquet/perso/dotfiles/nix/#boc'
 alias stow-dotfiles='(cd /Users/anthonybocquet/perso/dotfiles && stow -t ~ */)'
 
 function sesh-sessions() {
