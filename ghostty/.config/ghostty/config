@@ -4,3 +4,4 @@ font-thicken-strength = 75
 font-size = 20
 
 theme = Catppuccin Mocha
+window-decoration = none
