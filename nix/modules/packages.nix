@@ -9,6 +9,9 @@
     rustfmt
     clippy
 
+    # Zig
+    pkgs.zigpkgs.master
+
     # Editor and Git
     neovim
     git
@@ -37,6 +40,7 @@
     # Nix tools
     nixd
     statix
+    nixfmt-rfc-style
 
     # Python
     uv
