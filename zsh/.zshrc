@@ -21,7 +21,6 @@ zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
 zinit light Aloxaf/fzf-tab
 zinit ice depth=1; zinit light jeffreytse/zsh-vi-mode
-zinit wait lucid for MichaelAquilina/zsh-autoswitch-virtualenv
 
 # History management
 zinit cdreplay -q
@@ -56,9 +55,9 @@ export NVM_DIR="$HOME/.nvm"
     [ -s "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm" ] && \. "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm" # This loads nvm bash_completion
 
 
-# Nix
+# Aliases
 alias nix-rebuild='sudo darwin-rebuild switch --flake /Users/anthonybocquet/perso/nix/#boc'
-
+alias stow-dotfiles='(cd /Users/anthonybocquet/perso/dotfiles && stow -t ~ */)'
 
 function sesh-sessions() {
   {

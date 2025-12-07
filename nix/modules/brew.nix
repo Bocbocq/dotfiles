@@ -4,25 +4,16 @@
   homebrew = {
     enable = true;
 
-    # No additional taps needed currently
     taps = [
-
       "databricks/tap"
       "cloudfoundry/tap"
-
     ];
 
-    # CLI tools and utilities
     brews = [
-      # Fun utilities
       "cowsay"
       "fortune"
-      
-      # Dotfile management
       "stow"
-
       "tree-sitter-cli"
-
       "cf-cli@8"
       "databricks"
       "gnupg"
@@ -32,7 +23,17 @@
       "docker-compose"
     ];
 
-    # GUI applications
+    casks = [
+      "sapmachine25-jdk"
+      "bruno"
+      "ghostty"
+      "font-jetbrains-mono-nerd-font"
+      "arc"
+    ];
+
+    onActivation.autoUpdate = false;
+  };
+}
     casks = [
       # Development
       "sapmachine25-jdk"
