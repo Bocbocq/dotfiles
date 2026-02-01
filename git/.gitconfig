@@ -1,10 +1,7 @@
 [user]
-  email = anthony.bocquet@sap.com
-  name = Anthony Bocquet
-  signingkey = 02543144F39B7416
-
-[includeIf "gitdir:~/perso/**"]
-  path = ~/.gitconfig-perso
+	name = Bocbocq
+	email = anbocque@gmail.com
+  signingkey = 4D6B3FA9A7C69C31
 
 [pull]
   rebase = true

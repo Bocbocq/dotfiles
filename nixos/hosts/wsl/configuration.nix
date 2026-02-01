@@ -15,11 +15,17 @@
 
   # Enable nix flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  environment.systemPackages = with pkgs; [ git vim wget ];
+  environment = { systemPackages = with pkgs; [ git vim wget wsl-open];
 
   # Set the default editor to vim
-  environment.variables.EDITOR = "vim";
+  variables.EDITOR = "vim";
+  variables.BROWSER = "wsl-open";
+  };
 
   programs.zsh.enable = true;
+  programs.gnupg.agent = {
+      enable = true;
+      enableSSHSupport = true;
+    };
   users.users.${username}.shell = pkgs.zsh;
 }
