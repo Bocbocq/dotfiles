@@ -39,7 +39,6 @@ setopt hist_ignore_all_dups
 setopt hist_save_no_dups
 setopt hist_ignore_dups
 setopt hist_find_no_dups
-fortune | cowsay -f stegosaurus
 
 source <(fzf --zsh)
 
@@ -54,10 +53,6 @@ export NVM_DIR="$HOME/.nvm"
     [ -s "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" ] && \. "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" # This loads nvm
     [ -s "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm" ] && \. "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm" # This loads nvm bash_completion
 
-
-# Aliases
-alias nix-rebuild='sudo darwin-rebuild switch --flake /Users/anthonybocquet/perso/dotfiles/nix/#boc'
-alias stow-dotfiles='(cd /Users/anthonybocquet/perso/dotfiles && stow -t ~ */)'
 
 function sesh-sessions() {
   {
