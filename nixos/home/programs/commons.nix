@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   home.packages = with pkgs; [
     # Dotfiles
     stow
@@ -16,5 +16,6 @@
     unzip
     zoxide
     zip
+    btop
   ];
 }
