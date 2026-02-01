@@ -28,4 +28,9 @@
       enableSSHSupport = true;
     };
   users.users.${username}.shell = pkgs.zsh;
+  fonts.packages = with pkgs; [
+  nerd-fonts.jetbrains-mono
+  nerd-fonts.fira-code
+  nerd-fonts.droid-sans-mono
+];
 }

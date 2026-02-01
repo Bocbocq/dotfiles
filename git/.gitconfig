@@ -67,3 +67,9 @@
 
 [commit]
   gpgSign = true
+[credential "https://github.com"]
+	helper = 
+	helper = !/nix/store/cpailfv1a1r934baq44a8n95f2hh0ak2-gh-2.72.0/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/nix/store/cpailfv1a1r934baq44a8n95f2hh0ak2-gh-2.72.0/bin/gh auth git-credential
