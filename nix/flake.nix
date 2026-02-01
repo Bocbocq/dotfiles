@@ -1,44 +1,57 @@
 {
-  description = "Bocbocq nix-darwin system flake";
+  description = "Boc's NixOS Configurations";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    nix-darwin = {
-      url = "github:nix-darwin/nix-darwin/master";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+
+    home-manager = {
+      url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nix-homebrew.url = "github:zhaofengli/nix-homebrew";
+
+    nixos-wsl = {
+      url = "github:nix-community/NixOS-WSL";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs =
-    {
-      self,
-      nix-darwin,
-      nixpkgs,
-      nix-homebrew,
-      ...
-    }:
-    {
-      darwinConfigurations."boc" = nix-darwin.lib.darwinSystem {
-        system = "aarch64-darwin";
+  outputs = { self, nixpkgs, home-manager, nixos-wsl, ... }@inputs:
+    let
+      username = "boc";
+      system = "x86_64-linux";
 
-        modules = [
-          ./configuration.nix
-          nix-homebrew.darwinModules.nix-homebrew
+      specialArgs = { inherit inputs username; };
 
-          {
+      mkHomeManagerModule = homeFile: {
+        home-manager.useGlobalPkgs = true;
+        home-manager.useUserPackages = true;
+        home-manager.extraSpecialArgs = specialArgs;
+        home-manager.users.${username} = import homeFile;
+      };
 
-            nix-homebrew = {
-              enable = true;
-              user = "anthonybocquet";
-              enableRosetta = true;
-              autoMigrate = true;
-            };
+    in {
+      nixosConfigurations = {
+        "media-server" = nixpkgs.lib.nixosSystem {
+          inherit system specialArgs;
+          modules = [
+            ./hosts/media-server/configuration.nix
 
-            system.configurationRevision = self.rev or self.dirtyRev or null;
-            security.pam.services.sudo_local.touchIdAuth = true;
-          }
-        ];
+            home-manager.nixosModules.home-manager
+            (mkHomeManagerModule ./hosts/media-server/home.nix)
+          ];
+        };
+
+        "wsl" = nixpkgs.lib.nixosSystem {
+          inherit system specialArgs;
+          modules = [
+            nixos-wsl.nixosModules.wsl
+
+            ./hosts/wsl/configuration.nix
+
+            home-manager.nixosModules.home-manager
+            (mkHomeManagerModule ./hosts/wsl/home.nix)
+          ];
+        };
       };
     };
 }
