@@ -64,15 +64,19 @@
   };
 
   networking.useDHCP = true;
-  # networking.interfaces.enp1s0 = {
-  #   useDHCP = false;
-  #   ipv4.addresses = [
-  #     {
-  #       address = "192.168.1.26";
-  #       prefixLength = 24;
-  #     }
-  #   ];
-  # };
-  # networking.defaultGateway = "192.168.1.1";
-  # networking.nameservers = [ "1.1.1.1" "8.8.8.8" ];
+
+  # Use the 'powersave' governor to keep clocks lower and heat down
+  powerManagement.cpuFreqGovernor = "powersave";
+
+  # Enable Thermald (Intel's thermal management daemon)
+  services.thermald.enable = true;
+
+  # Optional: TLP for aggressive power management
+  services.tlp = {
+    enable = true;
+    settings = {
+      CPU_SCALING_GOVERNOR_ON_AC = "powersave";
+      CPU_ENERGY_PERF_POLICY_ON_AC = "power";
+    };
+  };
 }
