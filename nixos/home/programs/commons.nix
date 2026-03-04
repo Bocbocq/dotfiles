@@ -17,5 +17,7 @@
     zoxide
     zip
     btop
+    tree-sitter
+    bash-language-server
   ];
 }
