@@ -9,4 +9,4 @@ unset _hm_vars
 export DATABRICKS_RUNTIME_VERSION="connect"
 
 # uv
-export PATH="/home/boc/.local/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
