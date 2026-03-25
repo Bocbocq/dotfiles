@@ -1,7 +1,9 @@
-# uv
-export PATH="/Users/anthonybocquet/var/lib/../bin:$PATH"
+# Source Home Manager session vars (provides LD_LIBRARY_PATH etc.)
+[ -f ~/.nix-profile/etc/profile.d/hm-session-vars.sh ] && \
+  source ~/.nix-profile/etc/profile.d/hm-session-vars.sh
 
-# ZVM
-export ZVM_INSTALL="$HOME/.zvm/self"
-export PATH="$PATH:$HOME/.zvm/bin"
-export PATH="$PATH:$ZVM_INSTALL/"
+# Databricks
+export DATABRICKS_RUNTIME_VERSION="connect"
+
+# uv
+export PATH="/home/boc/.local/bin:$PATH"
