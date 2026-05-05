@@ -12,6 +12,8 @@
 }: {
   imports = [];
 
+  nixpkgs.config.allowUnfree = true;
+
   wsl.enable = true;
   wsl.defaultUser = username;
 
@@ -24,6 +26,11 @@
     variables.EDITOR = "vim";
     variables.BROWSER = "wsl-open";
   };
+
+  programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [
+    stdenv.cc.cc.lib
+  ];
 
   programs.zsh.enable = true;
   programs.gnupg.agent = {

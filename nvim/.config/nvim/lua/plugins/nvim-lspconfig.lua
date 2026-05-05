@@ -7,6 +7,7 @@ return {
         nil_ls = { enabled = false },
         ruff = {},
         basedpyright = { enabled = true },
+        marksman = {},
       },
     },
   },
