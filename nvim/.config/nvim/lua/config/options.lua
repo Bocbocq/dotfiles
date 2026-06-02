@@ -4,6 +4,8 @@
 -- Native inline completions don't support being shown as regular completions
 vim.g.ai_cmp = true
 
+vim.g.lazyvim_python_lsp = "basedpyright"
+
 -- Set to `true` in your `options.lua` to enable experimental support for Next Edit Suggestions
 vim.g.copilot_nes = true
 -- vim.opt.iskeyword:remove("_")

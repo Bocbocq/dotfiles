@@ -1,5 +1,8 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
+    # Java (required for PySpark 4.1+)
+    jdk17
+
     # Python
     python312
     uv
