@@ -26,6 +26,7 @@
 
     # JavaScript
     nodejs
+    prettier
 
     # Nix
     nixd

@@ -15,6 +15,7 @@
     fzf
     gcc
     gnumake
+    just
     ripgrep
     unzip
     zoxide

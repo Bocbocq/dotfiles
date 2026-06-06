@@ -4,15 +4,11 @@ return {
     "stevearc/conform.nvim",
     opts = {
       formatters_by_ft = {
-        python = { "isort", "black" },
+        python = { "ruff_fix", "ruff_format" },
       },
       formatters = {
-        black = {
-          command = vim.fn.exepath("black"),
-        },
-        isort = {
-          command = vim.fn.exepath("isort"),
-        },
+        ruff_fix = { command = vim.fn.exepath("ruff") },
+        ruff_format = { command = vim.fn.exepath("ruff") },
       },
     },
   },
