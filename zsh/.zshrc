@@ -45,15 +45,6 @@ source <(fzf --zsh)
 # Catppuccin Mocha theme for fzf
 export FZF_DEFAULT_OPTS="--color=bg+:#313244,fg:#CDD6F4,hl:#F38BA8,fg+:#CDD6F4,hl+:#F38BA8,pointer:#F5E0DC,marker:#B4BEFE,prompt:#CBA6F7"
 
-#Java
-export JAVA_HOME="/Library/Java/JavaVirtualMachines/sapmachine-25.jdk/Contents/Home"
-
-# NVM
-export NVM_DIR="$HOME/.nvm"
-    [ -s "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" ] && \. "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" # This loads nvm
-    [ -s "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm" ] && \. "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm" # This loads nvm bash_completion
-
-
 function sesh-sessions() {
   {
     exec </dev/tty
@@ -75,3 +66,6 @@ eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
 
 export GPG_TTY=$(tty)
+
+# opencode
+export PATH=/home/boc/.opencode/bin:$PATH

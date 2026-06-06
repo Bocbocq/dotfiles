@@ -1,7 +1,7 @@
 [user]
-	name = Bocbocq
-	email = anbocque@gmail.com
-  signingkey = 4D6B3FA9A7C69C31
+	name = anthony-bocquet_rimes
+	email = anthony.bocquet@rimes.com
+  signingkey = 2494E579EEAAF2E2
 
 [pull]
   rebase = true
@@ -73,3 +73,5 @@
 [credential "https://gist.github.com"]
 	helper = 
 	helper = !/nix/store/cpailfv1a1r934baq44a8n95f2hh0ak2-gh-2.72.0/bin/gh auth git-credential
+[url "git@github.com:"]
+	insteadOf = https://github.com/
